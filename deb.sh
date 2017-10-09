@@ -5,21 +5,8 @@ if [[ $USER != "root" ]]; then
 	exit
 fi
 
-clear
-# cek ip
-vps="vpn989";
+
 MYIP=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0' | head -n1`;
-echo -e "\e[35m installation Script= OpenVpn , Ssh , DropBear , OcsPanel , Easy Menu"
-echo -e "\e[31m                |================================|"
-echo -e "\e[32m                |    AUTO SCRIPT BY VPN989       |"
-echo -e "\e[33m                |   WHATSAPP : 0143749392        |"
-echo -e "\e[34m                |  TELEGRAM  : @Chandra989       |"
-echo -e "\e[35m                |    GROUP   : @Vpn989Group      |"
-echo -e "\e[33m                |_______________________________ |"
-echo -e "\e[31m                |       COPYRIGHT BY VPN989      |"
-echo -e "\e[35m                |================================|"
-	
-fi 
 
 # initialisasi var
 export DEBIAN_FRONTEND=noninteractive
