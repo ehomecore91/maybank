@@ -1,12 +1,33 @@
 #!/bin/bash
-
-if [[ $USER != "root" ]]; then
-	echo "Maaf, Anda harus menjalankan ini sebagai root"
-	exit
+# ******************************************
+# Program: Autoscript Servis OrangKuatSabahanTerkini
+# Website: AutoScriptNobita.tk
+# Developer: OrangKuatSabahanTerkini
+# Nickname: OrangKuatSabahanTerkini
+# Date: 22-07-2016
+# Last Updated: 22-08-2017
+# ******************************************
+# MULA SETUP
+myip=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0' | head -n1`;
+myint=`ifconfig | grep -B1 "inet addr:$myip" | head -n1 | awk '{print $1}'`;
+if [ $USER != 'root' ]; then
+echo "Sorry, for run the script please using root user"
+exit 1
 fi
-
-
-MYIP=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0' | head -n1`;
+if [[ "$EUID" -ne 0 ]]; then
+echo "Sorry, you need to run this as root"
+exit 2
+fi
+if [[ ! -e /dev/net/tun ]]; then
+echo "TUN is not available"
+exit 3
+fi
+echo "
+AUTOSCRIPT BY OrangKuatSabahanTerkini
+AMBIL PERHATIAN !!!"
+clear
+echo "MULA SETUP"
+clear
 
 # initialisasi var
 export DEBIAN_FRONTEND=noninteractive
